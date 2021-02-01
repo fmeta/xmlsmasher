@@ -1,0 +1,30 @@
+#!/usr/bin/python
+
+#python3.6.
+
+import re
+import sys
+
+print('......................................')
+print('......................................')
+print(' __x______ dfsaasdadsassdad ______x__ ')
+print('......................................')
+print('......................................')
+print(' ')
+print(' ')
+
+a = input('Select xml-file: ')
+print(' ')
+b = input('Select xyz-file: ')
+
+pattern = re.compile('(?<=\>)(.*)(?=<\/P>)')
+
+with open(b, "r") as f:
+    match = f.read().splitlines()
+    print(match)
+
+with open(a, "r+") as f:
+    
+    content = pattern.sub(lambda x: match.pop(0) if match else x.group(), f.read())
+    f.seek(0)  # rewind
+    f.write(content)
